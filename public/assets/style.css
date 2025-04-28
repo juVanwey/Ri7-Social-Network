@@ -1,0 +1,270 @@
+/* Global */
+
+/* Permet au footer de rester en bas de la page */
+html,
+body {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1; /* pousse le footer vers le bas */
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header + Footer */
+header,
+footer {
+  background-color: #0030b8;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+}
+
+header a:hover {
+  text-decoration: underline;
+}
+
+/* Titres + sous-titres */
+h2 {
+  margin-top: 40px;
+  color: #0030b8;
+  text-align: center;
+}
+
+.subtitle {
+  text-align: center;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Formulaire */
+form {
+  max-width: 600px;
+  margin: 0 auto 40px auto;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+form input[type="text"],
+form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: vertical;
+}
+
+form button {
+  background-color: #0030b8;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+form button:hover {
+  transform: scale(1.05);
+}
+
+/* Post Card */
+.post {
+  max-width: 600px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #0030b8;
+}
+
+.post h2 {
+  color: #0030b8;
+  margin-top: 0;
+}
+
+.post p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.post small {
+  display: block;
+  margin-top: 10px;
+  color: #777;
+  font-size: 13px;
+}
+
+/* Actions lien post */
+.post a {
+  color: #0030b8;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.post a:hover {
+  text-decoration: underline;
+}
+
+/* Auth Pages */
+.auth-page {
+  max-width: 400px;
+  margin: 40px auto;
+  background-color: #ffffff;
+  padding: 30px 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.auth-page h1 {
+  color: #0030b8;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.auth-page form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-page label {
+  margin-top: 10px;
+  font-weight: 500;
+  color: #333;
+}
+
+.auth-page input[type="email"],
+.auth-page input[type="password"],
+.auth-page input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+.auth-page button {
+  background-color: #0030b8;
+  color: white;
+  border: none;
+  padding: 12px;
+  margin-top: 20px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.auth-page button:hover {
+  transform: scale(1.05);
+}
+
+.auth-page p {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.auth-page a {
+  color: #0030b8;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-page a:hover {
+  text-decoration: underline;
+}
+
+.auth-page .error {
+  color: red;
+  text-align: center;
+  margin-top: 15px;
+}
+
+/* Page d'édition d'un post */
+.edit-post-page {
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  
+  .edit-post-page form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .edit-post-page label {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .edit-post-page input[type="text"],
+  .edit-post-page textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    resize: vertical;
+  }
+  
+  .edit-post-page textarea {
+    min-height: 120px;
+  }
+  
+  .edit-post-page button {
+    background-color: #0030b8;
+    color: white;
+    border: none;
+    padding: 12px;
+    margin-top: 20px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .edit-post-page button:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Lien de retour */
+  .back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #0030b8;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .back-link:hover {
+    text-decoration: underline;
+  }
+  
