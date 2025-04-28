@@ -11,22 +11,67 @@ class AuthController
         $this->userRepository = new UserRepository();
     }
 
-    public function register()
+//     public function register()
+// {
+//     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+//         $username = $_POST['username'];
+//         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+//         $password = $_POST['password'];
+
+//         if (empty($username) || !$email || empty($password)) {
+//             $error = "Tous les champs sont obligatoires.";
+//             include '../views/auth/register.php';
+//             return;
+//         }
+
+//         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+//         $user = new User(null, $username, $email, $hashedPassword);
+
+//         if ($this->userRepository->save($user)) {
+//             $this->redirect('index.php?page=login');
+//         } else {
+//             $error = "Une erreur est survenue lors de l'inscription.";
+//         }
+//     }
+
+//     include '../views/auth/register.php';
+// }
+
+public function register()
 {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $username = $_POST['username'];
         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         $password = $_POST['password'];
 
+        // Validation des champs
         if (empty($username) || !$email || empty($password)) {
             $error = "Tous les champs sont obligatoires.";
             include '../views/auth/register.php';
             return;
         }
 
+        // Validation du mot de passe avec regex
+        if (!preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/', $password)) {
+            $error = "Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.";
+            include '../views/auth/register.php';
+            return;
+        }
+
+        // Vérification de l'unicité de l'email
+        if ($this->userRepository->findByEmail($email)) {
+            $error = "Cette adresse e-mail est déjà utilisée.";
+            include '../views/auth/register.php';
+            return;
+        }
+
+        // Hachage du mot de passe
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+        // Création de l'utilisateur
         $user = new User(null, $username, $email, $hashedPassword);
 
+        // Sauvegarde de l'utilisateur
         if ($this->userRepository->save($user)) {
             $this->redirect('index.php?page=login');
         } else {
